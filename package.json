@@ -30,7 +30,8 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
     "postinstall": "jetify",
     "jetify": "jetify",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "next dev"
   },
   "workspaces": {
     "packages": [

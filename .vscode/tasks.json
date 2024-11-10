@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "npm: dev",
+        "type": "npm",
+        "script": "dev",
+        "group": "build",
+        "problemMatcher": [],
+        "detail": "Runs the dev script defined in package.json"
+      }
+    ]
+  }
+  

@@ -22,13 +22,10 @@ module.exports = withPlugins([withTM, withImages], {
   },
   eslint: {
     ignoreDuringBuild: true,
-  },
-  webpack(config, { dev, isServer }) {
-    const newConfig = { ...config };
-    if (dev) {
-      newConfig.devtool = 'eval-source-map'; // Use 'eval-source-map' for better performance in development
-    }
-    return newConfig;
-  },
+  // }, webpack(config, { dev, isServer }) { if (dev && !isServer) { config.devtool = 'source-map'; } return config; },
+}, webpack(config, { dev, isServer }) { if (dev) { config.devtool = 'eval-source-map'; } return config; },
+  
   // swcMinify: true,
 });
+
+// module.exports = withPlugins([withPWA, withTM, withImages]);
