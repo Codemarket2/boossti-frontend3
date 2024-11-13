@@ -59,6 +59,7 @@ import UniqueMultipleValue from './field/UniqueMultipleValue';
 import DisplayResponseById from '../response/DisplayResponseById';
 import FormFields from './FormFields';
 import ActionVariables from './actions/ActionVariables';
+import ChatWindow from '../ChatWindow';
 
 interface FormViewWrapperProps {
   form: IForm;
@@ -251,9 +252,9 @@ export default function FormView({
       onCancel={state.formDrawer ? () => setState(initialState) : null}
     />
   );
-
   return (
     <div>
+      <ChatWindow fields={form.fields} />
       {form?.settings?.showFormTitle && (
         <InputGroup className="text-center">
           <Typography variant="h4">{form?.name}</Typography>
