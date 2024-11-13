@@ -59,7 +59,7 @@ import UniqueMultipleValue from './field/UniqueMultipleValue';
 import DisplayResponseById from '../response/DisplayResponseById';
 import FormFields from './FormFields';
 import ActionVariables from './actions/ActionVariables';
-import ChatWindow from '../ChatWindow';
+import ChatMessage from '../ChatMessage';
 
 interface FormViewWrapperProps {
   form: IForm;
@@ -254,7 +254,6 @@ export default function FormView({
   );
   return (
     <div>
-      <ChatWindow fields={form.fields} />
       {form?.settings?.showFormTitle && (
         <InputGroup className="text-center">
           <Typography variant="h4">{form?.name}</Typography>
@@ -1001,8 +1000,22 @@ export function FormViewChild({
                       {!['label'].includes(field.fieldType) && (
                         <>
                           <Typography data-testid="text-danger">
-                            {fieldIndex + 1}. {field?.label}
-                            {field?.options?.required && <span className="text-danger">*</span>}
+                            {
+                              // form.settings.widgetType === 'bot'
+                              true ? (
+                                <ChatMessage
+                                  type="bot"
+                                  message={`${fieldIndex + 1}. ${field?.label}`}
+                                />
+                              ) : (
+                                <>
+                                  {fieldIndex + 1}. {field?.label}
+                                  {field?.options?.required && (
+                                    <span className="text-danger">*</span>
+                                  )}
+                                </>
+                              )
+                            }
                             <DisplayConstraintError
                               fields={fields}
                               fieldId={field._id}

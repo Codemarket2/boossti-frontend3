@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Image from 'next/image';
 
@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     gap: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   botInnerSec: {
     flexDirection: 'row-reverse',
@@ -16,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
   },
   imgDiv: {
-    width: 48,
-    height: 48,
+    width: 40,
+    height: 40,
     padding: 8,
     borderRadius: '50%',
   },
@@ -52,6 +53,16 @@ type ChatMessageProps = {
 const ChatMessage = ({ type, message }: ChatMessageProps) => {
   const classes = useStyles();
 
+  const [messageDisplay, setMessageDisplay] = useState<string>('');
+
+  useEffect(() => {
+    if (messageDisplay.length < message.length) {
+      setTimeout(() => {
+        setMessageDisplay(message.slice(0, messageDisplay.length + 1));
+      }, 50);
+    }
+  }, [messageDisplay]);
+
   return (
     <>
       <div
@@ -66,7 +77,7 @@ const ChatMessage = ({ type, message }: ChatMessageProps) => {
               : type === 'person' && classes.personMessageContainer
           }
         >
-          <p className={classes.messageDiv}>{message}</p>
+          <p className={classes.messageDiv}>{messageDisplay}</p>
         </div>
         <div
           className={`${classes.imgDiv} ${
@@ -76,8 +87,8 @@ const ChatMessage = ({ type, message }: ChatMessageProps) => {
           <Image
             src={type === 'bot' ? '/bot.png' : type === 'person' && '/person.png'}
             alt="Person"
-            width={32}
-            height={32}
+            width={28}
+            height={28}
           />
         </div>
       </div>
