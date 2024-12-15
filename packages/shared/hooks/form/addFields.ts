@@ -54,6 +54,7 @@ export const defaultOptions: IFieldOptions = {
   formField: '',
   showCommentBox: false,
   showStarRating: false,
+  showTracking: false,
   notEditable: false,
   systemCalculatedAndSaved: false,
   systemValue: null,

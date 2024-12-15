@@ -29,6 +29,7 @@ export interface IFieldOptions {
   formField: string;
   showCommentBox: boolean;
   showStarRating: boolean;
+  showTracking: boolean;
   notEditable: boolean;
   systemCalculatedAndSaved: boolean;
   systemValue: any;
