@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
-
+  noWarningsAsErrors: true,
   extends: [
     'plugin:react/recommended',
     'airbnb',
