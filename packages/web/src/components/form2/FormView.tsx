@@ -59,6 +59,7 @@ import UniqueMultipleValue from './field/UniqueMultipleValue';
 import DisplayResponseById from '../response/DisplayResponseById';
 import FormFields from './FormFields';
 import ActionVariables from './actions/ActionVariables';
+import ChatMessage from '../ChatMessage';
 
 interface FormViewWrapperProps {
   form: IForm;
@@ -251,7 +252,6 @@ export default function FormView({
       onCancel={state.formDrawer ? () => setState(initialState) : null}
     />
   );
-
   return (
     <div>
       {form?.settings?.showFormTitle && (
@@ -1000,8 +1000,22 @@ export function FormViewChild({
                       {!['label'].includes(field.fieldType) && (
                         <>
                           <Typography data-testid="text-danger">
-                            {fieldIndex + 1}. {field?.label}
-                            {field?.options?.required && <span className="text-danger">*</span>}
+                            {
+                              // form.settings.widgetType === 'bot'
+                              true ? (
+                                <ChatMessage
+                                  type="bot"
+                                  message={`${fieldIndex + 1}. ${field?.label}`}
+                                />
+                              ) : (
+                                <>
+                                  {fieldIndex + 1}. {field?.label}
+                                  {field?.options?.required && (
+                                    <span className="text-danger">*</span>
+                                  )}
+                                </>
+                              )
+                            }
                             <DisplayConstraintError
                               fields={fields}
                               fieldId={field._id}

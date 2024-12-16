@@ -821,6 +821,22 @@ export default function AddField({
               data-testid="show-star-rating-field-option"
             />
             <br />
+            {/* New checkbox added */}
+            <FormControlLabel
+              className="mt-n2"
+              disabled={formik.isSubmitting}
+              control={
+                <Checkbox
+                  checked={formik.values.options?.showTracking}
+                  onChange={({ target }) => onOptionChange({ showTracking: target.checked })}
+                  name="showTracking"
+                  color="primary"
+                />
+              }
+              label="Show tracking"
+              data-testid="show-star-rating-field-option"
+            />
+            <br />
             <FormControlLabel
               className="mt-n2"
               disabled={formik.isSubmitting}

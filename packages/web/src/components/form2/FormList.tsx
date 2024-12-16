@@ -51,7 +51,7 @@ export default function FormList({
           <ErrorLoading error={error} />
         ) : (
           <List dense disablePadding>
-            {data.getForms.data.map((form, i) => (
+            {data.getForms.data?.map((form, i) => (
               <Fragment key={form._id}>
                 {i > 0 && <Divider />}
                 <Link href={customLink ? customLink(form) : `/form/${form.slug}`}>

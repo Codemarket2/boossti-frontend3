@@ -34,6 +34,7 @@ export default function FormSetting({ formId, settings, onChange, isWidget, stat
           <MenuItem value="both">Display form & responses</MenuItem>
           <MenuItem value="form">Display only form</MenuItem>
           <MenuItem value="responses">Display only responses</MenuItem>
+          <MenuItem value="bot">Display as bot</MenuItem>
         </TextField>
       </InputGroup>
       {settings?.widgetType !== 'responses' && (

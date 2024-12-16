@@ -36,7 +36,7 @@ export const useCheckUnique = ({
         valueFilter: { ...filter, 'values.field': field?._id },
         appId: setting?.appResponse?._id,
       });
-      if (existingResponseId) {
+      if (existingResponseId && existingResponseId !== '{}') {
         setUnique(existingResponseId);
       }
       setUniqueLoading(false);

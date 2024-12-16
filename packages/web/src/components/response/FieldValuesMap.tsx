@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import CommentLikeShare from '../comment/CommentLikeShare';
 import DisplayRichText from '../common/DisplayRichText';
 import DisplayValue from '../form2/DisplayValue';
@@ -161,6 +162,13 @@ export default function FieldValuesMap({
                         <>
                           {field?.options?.showCommentBox && (
                             <CommentLikeShare threadId={value?._id} />
+                          )}
+                          {field?.options?.showTracking && (
+                            <Tooltip title={'Track'}>
+                              <IconButton>
+                                <TimelineIcon />
+                              </IconButton>
+                            </Tooltip>
                           )}
                           {field?.options?.showStarRating && <StarRating parentId={value?._id} />}
                         </>

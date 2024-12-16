@@ -14,6 +14,7 @@ const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')(['@frontend/shared']);
 
 module.exports = withPlugins([withTM, withImages], {
+  distDir: 'dist', // Add this line to specify the output directory
   images: {
     disableStaticImages: true,
   },
@@ -24,11 +25,12 @@ module.exports = withPlugins([withTM, withImages], {
     ignoreDuringBuild: true,
   },
   webpack(config, { dev, isServer }) {
-    const newConfig = { ...config };
-    if (dev) {
-      newConfig.devtool = 'eval-source-map'; // Use 'eval-source-map' for better performance in development
+    if (dev && !isServer) {
+      config.devtool = 'source-map';
     }
-    return newConfig;
+    return config;
   },
   // swcMinify: true,
 });
+
+// module.exports = withPlugins([withPWA, withTM, withImages]);
