@@ -20,6 +20,7 @@ export default function HeadComponent({ title, description, image, url, children
     url: url ? `${projectConfig.url}${url}` : projectConfig.url,
   });
   const settings = useSelector(({ setting }: any) => setting);
+
   useEffect(() => {
     if (settings?.isApp && settings?.appName) {
       setState((oldState) => ({
