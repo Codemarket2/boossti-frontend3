@@ -11,7 +11,6 @@ interface IProps {
   url?: string;
   children?: React.ReactNode;
 }
-
 export default function HeadComponent({ title, description, image, url, children }: IProps) {
   const [state, setState] = useState({
     title: title || projectConfig.title,
